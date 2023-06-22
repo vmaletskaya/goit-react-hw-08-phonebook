@@ -1,0 +1,19 @@
+.tost {
+    position: absolute;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.text {
+    font-size: 14px;
+    color: #555;
+}
