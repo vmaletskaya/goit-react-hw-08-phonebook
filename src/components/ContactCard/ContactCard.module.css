@@ -1,6 +1,7 @@
 li {
     display: inline-flex;
     flex-direction: column;
+    width: 50%;
     color: black;
     height: min-content;
     font-size: 24px;
@@ -8,9 +9,10 @@ li {
     gap: 12px;
     padding: 30px;
     position: relative;
-
+    box-sizing: border-box;
     border-radius: 5px;
     border: 1px solid grey;
+    background-color: white;
 }
 
 .contact {
@@ -33,7 +35,7 @@ li {
 
 .button {
     display: block;
-    border: 1px solid grey;
+    border: 1px solid #967e9558;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: rgba(82, 82, 82, 0.3) 0px 1px 2px 0px;

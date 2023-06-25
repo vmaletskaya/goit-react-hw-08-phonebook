@@ -1,28 +1,49 @@
-.filterField {
-    padding: 8px 12px;
-    border-radius: 5px;
+.container {
+    display: flex;
     margin-top: 10px;
-    margin-right: 25px;
+    padding-bottom: 20px;
     margin-bottom: 20px;
+    flex-direction: column;
+    gap: 25px;
+    border-bottom: 1px solid white;
+}
+
+.filterField {
+    width: 38%;
+    padding: 10px 25px;
+    border-radius: 5px;
     outline: none;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: 1px solid #787777;
+    font-size: 1rem;
+    color: #333333;
+    background-color: white;
+
 }
 
 .filterField:hover,
 .filterField:focus {
-    outline: 1px solid rgb(112, 99, 99, 0.597);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid rgb(78, 78, 78);
+    box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 8px;
 }
 
-.label {
-    font-size: 24px;
-    font-weight: 400;
+.filterField::placeholder {
     color: black;
 }
 
 .filterField {
-    font-size: 24px;
+    font-size: 1.4rem;
     font-family: monospace;
+    color: black;
 }
+
+@media screen and (min-width: 600px) {
+    .filterField {
+        font-size: 20px;
+    }
+
+    .container {
+        flex-direction: row;
+        border: none
+    }
+}
+

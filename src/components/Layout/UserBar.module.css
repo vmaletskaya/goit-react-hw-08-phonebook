@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon {
+    border-radius: 25%;
+    height: 40px;
+    width: 40px;
+}
+
+
+.userName {
+    display: none;
+    color: #222;
+    font-size: 22px;
+}
+
+@media screen and (min-width: 560px) {
+    .userName {
+        display: block;
+    }
+}
