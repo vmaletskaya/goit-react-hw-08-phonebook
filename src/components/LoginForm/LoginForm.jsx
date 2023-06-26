@@ -26,7 +26,7 @@ const LoginForm = () => {
             type="email"
             name="email"
             placeholder="Email"
-            pattern="^[a-zA-Z\s]+$"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             required
             onChange={handleChange}
             value={formData.email}

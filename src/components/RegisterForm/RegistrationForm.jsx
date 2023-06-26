@@ -41,7 +41,7 @@ const RegistrationForm = () => {
             placeholder="Email"
             onChange={handleChange}
             value={formData.email}
-            pattern="^[0-9]+$"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             required
           />
           <input
