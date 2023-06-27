@@ -18,32 +18,30 @@ const handleRejected = (state, action) => {
 export const contactsSlice = createSlice({
   name: 'Contacts',
   initialState,
-  extraReducers: {
-    [API.fetchAll.pending]: handlePending,
-    [API.addContact.pending]: handlePending,
-    [API.deleteContact.pending]: handlePending,
-    [API.fetchAll.rejected]: handleRejected,
-    [API.addContact.rejected]: handleRejected,
-    [API.deleteContact.rejected]: handleRejected,
-    [API.fetchAll.fulfilled](state, { payload }) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = payload;
-    },
-    [API.addContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items.push(action.payload);
-    },
-    [API.deleteContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      
-      const index = state.items.findIndex(
-        contact => contact.id === action.payload.id
-      );
-      state.items.splice(index, 1);
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(API.fetchAll.pending, handlePending)
+      .addCase(API.addContact.pending, handlePending)
+      .addCase(API.deleteContact.pending, handlePending)
+      .addCase(API.fetchAll.rejected, handleRejected)
+      .addCase(API.addContact.rejected, handleRejected)
+      .addCase(API.deleteContact.rejected, handleRejected)
+      .addCase(API.fetchAll.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = payload;
+      })
+      .addCase(API.addContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(action.payload);
+      })
+      .addCase(API.deleteContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(contact => contact.id === action.payload.id);
+        state.items.splice(index, 1);
+      });
   },
 });
 

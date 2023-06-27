@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
-export default function ContactCard({ name, number, id, delay }) {
+export default function ContactCard({ name, number, id }) {
   const dispatch = useDispatch();
 
   const handleDeleteCard = e => {
@@ -12,7 +12,7 @@ export default function ContactCard({ name, number, id, delay }) {
   };
 
   return (
-    <li className={css.cardItem} title={name} data-id={id} data-aos="fade-up">
+  <li className={css.cardItem} title={`${name}:  ${number}`} data-id={id} data-aos="fade-up">
       <button
         type="button"
         className={css.button}

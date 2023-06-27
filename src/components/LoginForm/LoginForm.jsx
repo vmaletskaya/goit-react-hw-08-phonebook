@@ -1,9 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import css from './LoginForm.module.css';
+import { logIn } from '../../redux/auth/operations';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 
 const LoginForm = () => {
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -12,13 +15,33 @@ const LoginForm = () => {
   function handleChange(e) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
-  const handleSubmit = e => {
+
+   function resetForm() {
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      confirmedPassword: '',
+    });
+  }
+
+  const notify = () => toast.error('Ooops, You are not registered yet');
+  
+
+const handleSubmit = e => {
     e.preventDefault();
-    navigate('/', { replace: true });
+
+    dispatch(logIn(formData)).then(action => {
+      if ((action.type = 'auth/login/rejected')) {
+        notify();
+      }
+    });
+    resetForm();
   };
 
   return (
     <div className={css.container}>
+       <Toaster />
       <div className={css.form}>
         <header>Login</header>
         <form autoComplete="off" onSubmit={handleSubmit}>
@@ -26,7 +49,6 @@ const LoginForm = () => {
             type="email"
             name="email"
             placeholder="Email"
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             required
             onChange={handleChange}
             value={formData.email}

@@ -1,18 +1,29 @@
 import Button from 'components/Button/Button';
 
-import { useNavigate } from 'react-router-dom';
+
 
 import css from './UserBar.module.css';
+import { useDispatch} from 'react-redux';
+
+import { logOut } from '../../redux/auth/operations';
 
 const UserBar = () => {
-  const navigate = useNavigate();
+
+
+
+  const dispatch = useDispatch();
 
   function handleLogout() {
-    navigate('/login');
+    dispatch(logOut());
   }
+
   return (
     <div className={css.container}>
-      <Button name={'Logout'} onClick={handleLogout}></Button>
+      
+      <Button onClick={handleLogout}>
+       <span className={css.textOnBtn}>Logout</span>
+       
+      </Button>
     </div>
   );
 };

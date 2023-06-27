@@ -17,7 +17,7 @@ export default function ContactForm({onClick}) {
     if (contacts.find(o => o.name.toLowerCase() === name.toLowerCase())) {
       return alert(`<< ${name} >> is already in contacts`);
     } else {
-      dispatch(addContact({ name, phone: number }));
+      dispatch(addContact({ name,number }));
       reset();
       onClick()
     }
@@ -53,7 +53,6 @@ export default function ContactForm({onClick}) {
             pattern="^[0-9]+$"
             title="Phone number must be digits and can not contain spaces, dashes, parentheses and can start with +"
             required
-            placeholder="Enter phone number"
             value={number}
             onChange={e => setNumber(e.target.value)}
           />
